@@ -66,7 +66,7 @@ export default {
 		signIn () {
 			const user = { email: this.email, password: this.password }
 			this.$store.dispatch('login/signIn', user)
-			this.$route.push('/')
+			this.$router.push('/')
 		}
 	}
 }

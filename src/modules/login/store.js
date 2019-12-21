@@ -25,6 +25,7 @@ export const LoginStore = {
   },
   mutations: {
     [SET_TOKEN](state, payload) {
+      localStorage.token = payload
       state.token = payload
     },
   },

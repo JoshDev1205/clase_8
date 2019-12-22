@@ -8,8 +8,15 @@
 				<v-toolbar-title>EdBookstore</v-toolbar-title>
 				<v-spacer />
 				<v-toolbar-items>
-					<v-btn text>Inicio</v-btn>
-					<v-btn text>Autores</v-btn>
+					<v-btn
+						text
+						exact
+						to="/"
+					>Inicio</v-btn>
+					<v-btn
+						text
+						to="/author"
+					>Autores</v-btn>
 					<v-btn text>Libros</v-btn>
 				</v-toolbar-items>
 			</v-app-bar>

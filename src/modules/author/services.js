@@ -2,7 +2,7 @@ import { httpClient } from '@/plugins/axios'
 
 const token = localStorage.getItem('token')
 
-httpClient.defaults.headers.common['authorization'] = token
+httpClient.defaults.headers.common['Authorization'] = token
 
 export default {
   createAuthor(author) {

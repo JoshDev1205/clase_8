@@ -1,9 +1,9 @@
 import AuthorServices from './services'
 
-export const SET_ALL_AUTHORS = 'author/SET_ALL_AUTHORS'
-export const SET_AUTHOR = 'author/SET_AUTHOR'
-export const UPDATE_AUTHOR = 'author/UPDATE_AUTHOR'
-export const CREATE_AUTHOR = 'author/CREATE_AUTHOR'
+const SET_ALL_AUTHORS = 'author/SET_ALL_AUTHORS'
+const SET_AUTHOR = 'author/SET_AUTHOR'
+const UPDATE_AUTHOR = 'author/UPDATE_AUTHOR'
+const CREATE_AUTHOR = 'author/CREATE_AUTHOR'
 
 export const AuthorStore = {
   namespaced: true,
@@ -24,9 +24,9 @@ export const AuthorStore = {
       const res = await AuthorServices.getAuthor(payload)
       commit(SET_AUTHOR, res.data)
     },
-    updateAuthor: async ({ commit }, payload) => {
-      const { id, author } = payload
-      const res = await AuthorServices.updateAuthor(id, author)
+    updateAuthor: async ({ commit, state }, payload) => {
+      const { id } = payload
+      const res = await AuthorServices.updateAuthor(id, state.author)
       commit(UPDATE_AUTHOR, res.data)
     },
   },
@@ -42,9 +42,8 @@ export const AuthorStore = {
     },
     [UPDATE_AUTHOR](state, payload) {
       const { authors } = state
-
       const newState = authors.map(author => {
-        if (author.id === payload.id) {
+        if (author._id === payload._id) {
           author = payload
         }
 
